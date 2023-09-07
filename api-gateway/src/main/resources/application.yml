@@ -1,0 +1,36 @@
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:8081/.well-known/jwks.json
+  cloud:
+    gateway:
+      routes:
+        - id: auth-server
+          uri: http://localhost:8081
+          predicates:
+            - Path=/auth/**
+            - Host=parent.alrim.me
+          filters:
+            - StripPrefix=1
+        - id: auth-server2
+          uri: http://localhost:8081
+          predicates:
+            - Host=auth.alrim.me
+            - Path=/login/**
+        - id: subdomain
+          uri: http://localhost:8081
+          predicates:
+            - Host=auth.alrim.me
+        - id: main-server
+          uri: http://localhost:8082
+          predicates:
+            - Path=/main/**
+          filters:
+            - StripPrefix=1
+server:
+  port: 80
+logging:
+  level:
+    root: debug

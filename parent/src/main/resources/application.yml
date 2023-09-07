@@ -1,0 +1,9 @@
+logging:
+  level:
+    root: debug
+spring:
+  docker:
+    compose:
+      lifecycle-management: none
+server:
+  port: 8082
