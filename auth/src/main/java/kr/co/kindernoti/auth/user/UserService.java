@@ -1,6 +1,5 @@
 package kr.co.kindernoti.auth.user;
 
-import kr.co.kindernoti.auth.login.PlatformUser;
 import kr.co.kindernoti.auth.user.repository.PlatformUserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

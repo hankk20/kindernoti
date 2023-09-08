@@ -9,6 +9,9 @@ import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 
+/**
+ * Spring Security OidcUser를 {@link OauthLoginUser} 로 변환 한다
+ */
 @Component
 public class OidcUserService implements ReactiveOAuth2UserService<OidcUserRequest, OidcUser> {
 

@@ -1,6 +1,5 @@
 package kr.co.kindernoti.auth.security.jwt;
 
-import com.nimbusds.jose.JOSEException;
 import com.nimbusds.jose.jwk.JWKSet;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +16,7 @@ public class JwtController {
     private final JWKSet jwkSet;
 
     @GetMapping("/.well-known/jwks.json")
-    public Mono<ResponseEntity<Map<String,Object>>> wellKnownJwk() throws JOSEException {
+    public Mono<ResponseEntity<Map<String,Object>>> wellKnownJwk() {
         return Mono.just(ResponseEntity.ok(jwkSet.toJSONObject()));
     }
 }

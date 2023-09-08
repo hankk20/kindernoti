@@ -1,8 +1,8 @@
 package kr.co.kindernoti.auth.security.platform;
 
-import kr.co.kindernoti.auth.login.QPlatformUser;
 import kr.co.kindernoti.auth.security.DefaultAuthorities;
-import kr.co.kindernoti.auth.login.PlatformUser;
+import kr.co.kindernoti.auth.user.PlatformUser;
+import kr.co.kindernoti.auth.user.QPlatformUser;
 import kr.co.kindernoti.auth.user.repository.PlatformUserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.ReactiveUserDetailsService;

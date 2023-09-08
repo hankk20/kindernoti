@@ -1,6 +1,7 @@
-package kr.co.kindernoti.auth.login;
+package kr.co.kindernoti.auth.user;
 
-import kr.co.kindernoti.auth.user.User;
+import kr.co.kindernoti.auth.login.OauthProvider;
+import kr.co.kindernoti.auth.login.ServiceType;
 import lombok.Builder;
 import lombok.Getter;
 import org.springframework.data.annotation.TypeAlias;

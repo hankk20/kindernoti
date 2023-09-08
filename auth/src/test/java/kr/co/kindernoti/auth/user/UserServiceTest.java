@@ -1,6 +1,5 @@
 package kr.co.kindernoti.auth.user;
 
-import kr.co.kindernoti.auth.login.PlatformUser;
 import kr.co.kindernoti.auth.login.ServiceType;
 import kr.co.kindernoti.auth.user.repository.PlatformUserRepository;
 import org.junit.jupiter.api.DisplayName;

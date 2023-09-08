@@ -3,7 +3,7 @@ package kr.co.kindernoti.auth.security.oauth;
 import kr.co.kindernoti.auth.login.ServiceType;
 import kr.co.kindernoti.auth.security.filter.QueryParamConverterUtils;
 import kr.co.kindernoti.auth.security.filter.QueryParamSavedCache;
-import kr.co.kindernoti.auth.login.OauthUser;
+import kr.co.kindernoti.auth.user.OauthUser;
 import kr.co.kindernoti.auth.security.jwt.JwtService;
 import kr.co.kindernoti.auth.user.QUser;
 import kr.co.kindernoti.auth.user.repository.OauthUserRepository;

@@ -1,7 +1,6 @@
 package kr.co.kindernoti.auth.user;
 
 import jakarta.validation.constraints.*;
-import kr.co.kindernoti.auth.login.PlatformUser;
 import kr.co.kindernoti.auth.login.ServiceType;
 import lombok.Builder;
 import lombok.Getter;

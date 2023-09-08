@@ -3,7 +3,7 @@ package kr.co.kindernoti.auth.user.specification;
 import com.querydsl.core.types.Predicate;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import kr.co.kindernoti.auth.login.OauthProvider;
-import kr.co.kindernoti.auth.login.QOauthUser;
+import kr.co.kindernoti.auth.user.QOauthUser;
 import lombok.Builder;
 
 import java.util.Objects;

@@ -7,7 +7,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.querydsl.core.types.Predicate;
 import kr.co.kindernoti.auth.epages.EnumParameter;
 import kr.co.kindernoti.auth.epages.ResponseJwtMockContentModifier;
-import kr.co.kindernoti.auth.login.PlatformUser;
+import kr.co.kindernoti.auth.user.PlatformUser;
 import kr.co.kindernoti.auth.login.ServiceType;
 import kr.co.kindernoti.auth.security.jwt.JwtProvider;
 import kr.co.kindernoti.auth.security.jwt.JwtService;

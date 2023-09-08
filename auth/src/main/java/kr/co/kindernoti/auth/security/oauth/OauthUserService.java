@@ -9,6 +9,9 @@ import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 
+/**
+ * Spring Security OauthUser를 {@link OauthLoginUser} 로 변환 한다
+ */
 @Component
 public class OauthUserService implements ReactiveOAuth2UserService<OAuth2UserRequest, OAuth2User> {
 

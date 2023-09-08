@@ -5,7 +5,6 @@ import com.epages.restdocs.apispec.ResourceDocumentation;
 import com.epages.restdocs.apispec.ResourceSnippetParameters;
 import com.epages.restdocs.apispec.Schema;
 import kr.co.kindernoti.auth.epages.ConstrainedFieldsExtends;
-import kr.co.kindernoti.auth.login.PlatformUser;
 import kr.co.kindernoti.auth.login.ServiceType;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
