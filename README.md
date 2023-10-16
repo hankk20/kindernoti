@@ -9,8 +9,7 @@
 ### 알림 서비스
 ## 2️⃣ Tech
 ### Architecture
-<img alt="Static Badge" src="https://img.shields.io/badge/Micro Service-%23666666">
- <img alt="Static Badge" src="https://img.shields.io/badge/Hexagonal-%23666666"> <img alt="Static Badge" src="https://img.shields.io/badge/Domain Driven Design-%23666666">
+<img alt="Static Badge" src="https://img.shields.io/badge/Micro Service-%23666666"> <img alt="Static Badge" src="https://img.shields.io/badge/Hexagonal-%23666666"> <img alt="Static Badge" src="https://img.shields.io/badge/Domain Driven Design-%23666666">
 
 ### Language & Framework
 <img href="" src="https://img.shields.io/badge/Java17-%23FFFFFF?logo=openjdk&logoColor=black"> <img src="https://img.shields.io/badge/Gradle-%2302303A?logo=gradle&logoColor=white"> <img src="https://img.shields.io/badge/Boot-%236DB33F?logo=springboot&logoColor=white"> <img src="https://img.shields.io/badge/Security-%236DB33F?logo=springsecurity&logoColor=white"> <img src="https://img.shields.io/badge/Webflux-%236DB33F?logo=spring&logoColor=white">
