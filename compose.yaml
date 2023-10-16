@@ -34,14 +34,14 @@ services:
       context: .
       dockerfile: ./auth/Dockerfile
   mongodb:
+    environment:
+      - TZ=Asia/Seoul
     env_file:
       - ./container/env/mong.env
     image: 'mongo'
+    command: --timeStampFormat iso8601-local
     volumes:
       - ./container/mongo:/docker-entrypoint-initdb.d:ro
       - /local/data/mongo:/data/db
-    environment:
-      MONGO_INITDB_ROOT_PASSWORD: "kindernoti"
-      MONGO_INITDB_ROOT_USERNAME: "kindernoti11"
     ports:
       - '27020:27017'
