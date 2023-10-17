@@ -20,6 +20,12 @@ public class JwtService {
 
     private final ObjectMapper objectMapper;
 
+    /**
+     * JWT를 생성하여 응답으로 보낸다.
+     * @param webFilterExchange
+     * @param obj
+     * @return
+     */
     public Mono<Void> writeJwt(WebFilterExchange webFilterExchange, Object obj) {
 
         return Mono.defer(() -> {
