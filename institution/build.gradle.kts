@@ -1,9 +1,9 @@
 import com.epages.restdocs.apispec.gradle.OpenApi3Task
 import org.springframework.boot.gradle.tasks.bundling.BootJar
-import javax.annotation.processing.Processor
 
 plugins {
     java
+    jacoco
     id("org.springframework.boot") version "3.1.2"
     id("io.spring.dependency-management") version "1.1.2"
     id("com.epages.restdocs-api-spec") version "0.18.4" // epages plugin
@@ -86,6 +86,18 @@ dependencies {
 
 tasks.withType<Test> {
     useJUnitPlatform()
+    finalizedBy(tasks.jacocoTestReport)
+}
+
+tasks.jacocoTestReport {
+    dependsOn(tasks.test) // tests are required to run before generating the report
+}
+
+tasks.jacocoTestReport {
+    reports {
+        xml.required = true
+        html.required = false
+    }
 }
 
 openapi3 {
