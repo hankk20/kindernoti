@@ -83,6 +83,7 @@ openapi3 {
     version = "1"
     format = "yaml"
     outputDirectory = "${buildDir}/resources/main/static/docs"
+    println("Build Directory >>>>>> ${buildDir}")
 }
 
 tasks.withType<BootJar> {
