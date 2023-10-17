@@ -38,7 +38,7 @@ services:
       - TZ=Asia/Seoul
     env_file:
       - ./container/env/mong.env
-    image: 'mongo'
+    image: 'mongo:7.0.2'
     command: --timeStampFormat iso8601-local
     volumes:
       - ./container/mongo:/docker-entrypoint-initdb.d:ro
