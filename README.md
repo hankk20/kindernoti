@@ -1,5 +1,7 @@
 # Toy Project
-### 유치원 및 학교 알림장을 구현
+[![codecov](https://codecov.io/gh/hankk20/kindernoti/graph/badge.svg?token=87N2E3YJZF)](https://codecov.io/gh/hankk20/kindernoti)
+
+유치원 및 학교 알림장을 구현
 ## 1️⃣ 서비스 목록
 ### [인증 서비스](auth/README.md)
 - Oauth, ID/PW 로그인 기능
