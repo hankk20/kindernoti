@@ -1,13 +1,11 @@
 import com.epages.restdocs.apispec.gradle.OpenApi3Task
-import org.jetbrains.kotlin.cli.jvm.plugins.processCompilerPluginsOptions
-import org.jetbrains.kotlin.fir.expressions.builder.buildAnnotation
 import org.springframework.boot.gradle.tasks.bundling.BootJar
 
 plugins {
     java
     id("org.springframework.boot") version "3.1.2"
     id("io.spring.dependency-management") version "1.1.2"
-    id("com.epages.restdocs-api-spec") version "0.18.2" // epages plugin
+    id("com.epages.restdocs-api-spec") version "0.18.4" // epages plugin
     id("org.asciidoctor.jvm.convert") version "3.3.2"   // spring rest doc asciidoctor plugin
 }
 
@@ -66,6 +64,12 @@ dependencies {
     testImplementation("io.projectreactor:reactor-test")
     testImplementation("org.springframework.kafka:spring-kafka-test")
     testImplementation("org.springframework.security:spring-security-test")
+    testImplementation("org.springframework.boot:spring-boot-testcontainers")
+
+//    //testcontainer
+    implementation(platform("org.testcontainers:testcontainers-bom:1.19.1"))
+    testImplementation("org.testcontainers:mongodb")
+    testImplementation("org.testcontainers:junit-jupiter")
 }
 
 tasks.withType<Test> {

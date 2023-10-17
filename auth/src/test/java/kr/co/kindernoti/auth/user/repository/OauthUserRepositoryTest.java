@@ -1,6 +1,7 @@
 package kr.co.kindernoti.auth.user.repository;
 
 import com.querydsl.core.types.Predicate;
+import kr.co.kindernoti.auth.MongoContainerSupport;
 import kr.co.kindernoti.auth.login.OauthProvider;
 import kr.co.kindernoti.auth.user.specification.OauthUserSpecification;
 import lombok.extern.slf4j.Slf4j;
@@ -12,8 +13,7 @@ import reactor.test.StepVerifier;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Slf4j
-@DataMongoTest
-class OauthUserRepositoryTest {
+class OauthUserRepositoryTest extends MongoContainerSupport {
 
     @Autowired
     OauthUserRepository oauthUserRepository;

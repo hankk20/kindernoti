@@ -75,6 +75,13 @@ dependencies {
     testImplementation("io.projectreactor:reactor-test")
     testImplementation("org.springframework.kafka:spring-kafka-test")
     testImplementation("org.springframework.security:spring-security-test")
+    testImplementation("org.springframework.boot:spring-boot-testcontainers")
+
+//    //testcontainer
+    implementation(platform("org.testcontainers:testcontainers-bom:1.19.1"))
+    testImplementation("org.testcontainers:mongodb")
+    testImplementation("org.testcontainers:junit-jupiter")
+
 }
 
 tasks.withType<Test> {
