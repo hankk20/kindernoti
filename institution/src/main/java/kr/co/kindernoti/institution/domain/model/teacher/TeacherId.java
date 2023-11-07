@@ -8,4 +8,5 @@ public class TeacherId extends PlainId {
     public TeacherId(UUID uuid) {
         super(uuid);
     }
+
 }

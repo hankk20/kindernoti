@@ -28,9 +28,9 @@ public class InstitutionController {
                 .map(mapper::toResponse);
     }
 
-    @PostMapping("/institutions/{orgId}")
-    public Mono<ResponseEntity<InstitutionResponse>> registryOrganization(@PathVariable String orgId) {
-        return institutionUseCase.saveOrganization(orgId)
+    @PostMapping("/institutions/{institutionId}")
+    public Mono<ResponseEntity<InstitutionResponse>> registryInstitution(@PathVariable String institutionId) {
+        return institutionUseCase.saveInstitution(institutionId)
                 .map(mapper::toResponse)
                 .map(ResponseEntity::ok);
     }

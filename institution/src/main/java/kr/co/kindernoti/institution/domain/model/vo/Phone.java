@@ -3,6 +3,7 @@ package kr.co.kindernoti.institution.domain.model.vo;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import lombok.ToString;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.regex.Pattern;
@@ -10,6 +11,7 @@ import java.util.regex.Pattern;
 
 @Getter
 @RequiredArgsConstructor
+@ToString
 @EqualsAndHashCode
 public class Phone {
 

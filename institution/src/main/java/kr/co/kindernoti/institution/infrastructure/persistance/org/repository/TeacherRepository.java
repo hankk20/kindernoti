@@ -5,5 +5,5 @@ import kr.co.kindernoti.institution.infrastructure.persistance.org.model.Teacher
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 import org.springframework.data.querydsl.ReactiveQuerydslPredicateExecutor;
 
-public interface TeacherRepository extends ReactiveMongoRepository<TeacherData, TeacherId>, ReactiveQuerydslPredicateExecutor<TeacherData> {
+public interface TeacherRepository extends ReactiveMongoRepository<TeacherData, TeacherId>, ReactiveQuerydslPredicateExecutor<TeacherData>, CTeacherRepository {
 }

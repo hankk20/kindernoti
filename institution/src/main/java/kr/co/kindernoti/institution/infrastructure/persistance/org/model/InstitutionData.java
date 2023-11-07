@@ -6,6 +6,7 @@ import kr.co.kindernoti.institution.domain.model.org.InstitutionType;
 import kr.co.kindernoti.institution.domain.model.vo.Address;
 import kr.co.kindernoti.institution.infrastructure.persistance.shared.AuditMetadata;
 import lombok.Getter;
+import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.TypeAlias;
 import org.springframework.data.annotation.Version;
@@ -28,13 +29,10 @@ public class InstitutionData extends AuditMetadata {
 
     private Address address;
 
+    @Setter
     private Status status;
 
     private InstitutionType institutionType;
-
-
-    @Version
-    private int version;
 
     public InstitutionData(InstitutionId id, String orgId, String name, Address address, InstitutionType institutionType) {
         this.id = id;

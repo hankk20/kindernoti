@@ -1,7 +1,8 @@
 package kr.co.kindernoti.institution.interfaces.rest.teacher;
 
 import kr.co.kindernoti.institution.application.dto.TeacherDto;
-import kr.co.kindernoti.institution.application.in.org.teacher.TeacherUseCase;
+import kr.co.kindernoti.institution.application.in.teacher.TeacherUseCase;
+import kr.co.kindernoti.institution.domain.model.teacher.Teacher;
 import kr.co.kindernoti.institution.domain.model.vo.IdCreator;
 import kr.co.kindernoti.institution.domain.model.teacher.TeacherId;
 import kr.co.kindernoti.institution.domain.model.vo.Account;
@@ -10,12 +11,13 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import java.util.UUID;
+import java.util.List;
 
 /**
  * 교직원
@@ -40,5 +42,6 @@ public class TeacherController {
         return teacherUseCase.findTeacherByUserId(account.getUserId())
                 .map(teacherInterfaceMapper::toDto);
     }
+
 
 }

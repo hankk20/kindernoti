@@ -25,11 +25,11 @@ public class IdCreator<T extends PlainId> {
 
     public T from(String id) {
         try {
-            UUID uuid = UUID.fromString(id);
+            return newInstance(UUID.fromString(id));
         }catch (IllegalArgumentException e){
             throw new InvalidIdException(clazz.getSimpleName(), id);
         }
-        return newInstance(UUID.fromString(id));
+
     }
 
     public T create() {

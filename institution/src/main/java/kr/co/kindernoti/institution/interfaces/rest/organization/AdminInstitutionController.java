@@ -36,7 +36,7 @@ public class AdminInstitutionController {
         return institutionSearchUseCase.findById(IdCreator.creator(InstitutionId.class).from(id))
                 .flatMap(before -> {
                     Institution institution = institutionInterfaceMapper.patchToDomain(patchCommand, before);
-                    return institutionUseCase.save(institution)
+                    return institutionUseCase.update(institution)
                             .map(institutionInterfaceMapper::toResponse)
                             .map(ResponseEntity::ok);
                 })

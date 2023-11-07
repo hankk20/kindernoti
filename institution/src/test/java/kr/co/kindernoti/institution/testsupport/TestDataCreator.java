@@ -39,6 +39,6 @@ public class TestDataCreator {
     }
 
     public static Account createAccount() {
-        return Account.of("testUserId", "홍길동", "test@ttt.com",Phone.of("01011112222", Phone.PhoneType.MOBILE), List.of(Role.TEACHER));
+        return Account.of("testUserId", "홍길동", "test@ttt.com",Phone.of("01011112222", Phone.PhoneType.MOBILE), List.of("ROLE_TEACHER"));
     }
 }

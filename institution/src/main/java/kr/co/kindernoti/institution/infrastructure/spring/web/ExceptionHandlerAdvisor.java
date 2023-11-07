@@ -13,6 +13,12 @@ import reactor.core.publisher.Mono;
 @RestControllerAdvice
 public class ExceptionHandlerAdvisor extends ResponseEntityExceptionHandler {
 
+    /**
+     * NoDataFoundException은 404 오류로 응답 한다.
+     * @param ex
+     * @param exchange
+     * @return
+     */
     @ExceptionHandler(NoDataFoundException.class)
     public Mono<ResponseEntity<Object>> handleNoDataFoundException(Exception ex, ServerWebExchange exchange) {
         NoDataFoundException exception = (NoDataFoundException) ex;
@@ -20,6 +26,12 @@ public class ExceptionHandlerAdvisor extends ResponseEntityExceptionHandler {
         return createResponseEntity(dataErrorResponse, null, HttpStatus.NOT_FOUND, exchange);
     }
 
+    /**
+     * 아이디 오류는 아이디 값이 잘못되었을 경우 발생하므로 400 오류로 응답한다.
+     * @param ex
+     * @param exchange
+     * @return
+     */
     @ExceptionHandler(InvalidIdException.class)
     public Mono<ResponseEntity<Object>> handleInvalidIdException(Exception ex, ServerWebExchange exchange) {
         InvalidIdException exception = (InvalidIdException) ex;

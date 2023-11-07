@@ -1,13 +1,12 @@
 package kr.co.kindernoti.institution.application;
 
 import kr.co.kindernoti.institution.application.exception.InstitutionBusinessException;
-import kr.co.kindernoti.institution.application.in.org.teacher.TeacherUseCase;
+import kr.co.kindernoti.institution.application.in.teacher.TeacherUseCase;
 import kr.co.kindernoti.institution.application.out.teacher.TeacherPort;
 import kr.co.kindernoti.institution.domain.model.org.Institution;
 import kr.co.kindernoti.institution.domain.model.org.InstitutionId;
 import kr.co.kindernoti.institution.domain.model.teacher.Teacher;
 import kr.co.kindernoti.institution.domain.model.vo.Account;
-import kr.co.kindernoti.institution.domain.model.vo.IdCreator;
 import kr.co.kindernoti.institution.domain.model.vo.Status;
 import kr.co.kindernoti.institution.testsupport.TestDataCreator;
 import org.junit.jupiter.api.BeforeEach;
@@ -42,7 +41,7 @@ class TeacherServiceTest {
 
     @BeforeEach
     void setUp() {
-        teacherUseCase = new TeacherService(teacherPort, institutionSearchService);
+        teacherUseCase = new TeacherService(teacherPort, institutionSearchService, null, null);
         institution = TestDataCreator.institutionDomain();
         account = TestDataCreator.createAccount();
         teacher = new Teacher(institution.getId(), account);

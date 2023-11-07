@@ -6,13 +6,17 @@ import kr.co.kindernoti.institution.application.out.teacher.TeacherPort;
 import kr.co.kindernoti.institution.domain.model.org.InstitutionId;
 import kr.co.kindernoti.institution.domain.model.teacher.Teacher;
 import kr.co.kindernoti.institution.domain.model.teacher.TeacherId;
+import kr.co.kindernoti.institution.domain.model.vo.Account;
 import kr.co.kindernoti.institution.infrastructure.persistance.org.mapper.TeacherMapper;
 import kr.co.kindernoti.institution.infrastructure.persistance.org.model.QTeacherData;
+import kr.co.kindernoti.institution.infrastructure.persistance.org.model.TeacherData;
 import kr.co.kindernoti.institution.infrastructure.persistance.org.repository.TeacherRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+
+import java.time.LocalDateTime;
 
 @RequiredArgsConstructor
 @Component
@@ -58,7 +62,8 @@ public class TeacherAdaptor implements TeacherPort {
 
     @Override
     public Mono<Teacher> save(Teacher teacher) {
-        return teacherRepository.save(teacherMapper.toData(teacher))
+        TeacherData data = teacherMapper.toData(teacher);
+        return teacherRepository.save(data)
                 .map(teacherMapper::toDomain);
     }
 
@@ -66,5 +71,11 @@ public class TeacherAdaptor implements TeacherPort {
     public Mono<TeacherId> delete(TeacherId teacherId) {
         return teacherRepository.deleteById(teacherId)
                 .thenReturn(teacherId);
+    }
+
+    @Override
+    public Mono<Teacher> updateAccount(TeacherId id, Account account) {
+        return teacherRepository.updateAccount(id, account)
+                .map(teacherMapper::toDomain);
     }
 }

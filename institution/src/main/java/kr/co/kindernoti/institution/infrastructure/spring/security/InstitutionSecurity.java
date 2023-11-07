@@ -16,6 +16,7 @@ public class InstitutionSecurity {
     @Bean
     public SecurityWebFilterChain securityFilterChain(ServerHttpSecurity security) {
         return security.authorizeExchange(exchangeSpec -> exchangeSpec.anyExchange().permitAll())
+                .csrf(ServerHttpSecurity.CsrfSpec::disable)
                 .addFilterBefore(authenticationWebFilter, SecurityWebFiltersOrder.AUTHENTICATION)
                 .build();
 

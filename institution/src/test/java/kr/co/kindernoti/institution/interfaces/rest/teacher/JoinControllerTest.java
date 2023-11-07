@@ -3,7 +3,7 @@ package kr.co.kindernoti.institution.interfaces.rest.teacher;
 import com.epages.restdocs.apispec.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import kr.co.kindernoti.institution.application.dto.TeacherDto;
-import kr.co.kindernoti.institution.application.in.org.teacher.TeacherUseCase;
+import kr.co.kindernoti.institution.application.in.teacher.TeacherUseCase;
 import kr.co.kindernoti.institution.domain.model.org.InstitutionId;
 import kr.co.kindernoti.institution.domain.model.teacher.Teacher;
 import kr.co.kindernoti.institution.domain.model.vo.*;
@@ -23,10 +23,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.web.reactive.server.SecurityMockServerConfigurers;
 import org.springframework.test.web.reactive.server.WebTestClient;
-import org.springframework.web.util.UriComponentsBuilder;
 import reactor.core.publisher.Mono;
-
-import java.util.List;
 
 import static com.epages.restdocs.apispec.ResourceDocumentation.*;
 import static org.assertj.core.api.Assertions.*;
@@ -50,7 +47,7 @@ class JoinControllerTest {
     @SneakyThrows
     @Test
     @DisplayName("회원 가입")
-    void test() {
+    void testJoin() {
         //given
         InstitutionId institutionId = IdCreator.creator(InstitutionId.class).create();
         Account account = TestDataCreator.createAccount();
@@ -89,7 +86,7 @@ class JoinControllerTest {
                                 , fieldWithPath("account.email").description("이메일")
                                 , fieldWithPath("account.phone.number").description("전화번호")
                                 , new EnumFields(Phone.PhoneType.class).withPath("account.phone.phoneType").description("전화번호 유형")
-                                , fieldWithPath("account.roles").description("사용자 권한")
+                                , fieldWithPath("account.authorities").description("사용자 권한")
                         )
                         .build()
                 )));

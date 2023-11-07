@@ -1,7 +1,7 @@
 package kr.co.kindernoti.institution.interfaces.rest.teacher;
 
 import kr.co.kindernoti.institution.application.dto.TeacherDto;
-import kr.co.kindernoti.institution.application.in.org.teacher.TeacherUseCase;
+import kr.co.kindernoti.institution.application.in.teacher.TeacherUseCase;
 import kr.co.kindernoti.institution.domain.model.org.InstitutionId;
 import kr.co.kindernoti.institution.domain.model.vo.Account;
 import kr.co.kindernoti.institution.domain.model.vo.IdCreator;

@@ -50,7 +50,7 @@ class InstitutionAdminControllerTest {
     @Test
     @DisplayName("관리자권한으로 기관 정보 수정")
     @WithMockUser(roles = "ADMIN")
-    void test() {
+    void testInstitutionUpdateForAdmin() {
         InstitutionId id = IdCreator.creator(InstitutionId.class).create();
         Address modifyAddress = Address.of("서울시 영등포구", "339");
         Status modifyStats = Status.APPROVAL;
@@ -67,7 +67,7 @@ class InstitutionAdminControllerTest {
         //given
         given(institutionSearchUseCase.findById(any(InstitutionId.class)))
                 .willReturn(Mono.just(testData));
-        given(institutionUseCase.save(any(Institution.class)))
+        given(institutionUseCase.update(any(Institution.class)))
                 .willReturn(Mono.just(resultData));
 
         client.mutateWith(SecurityMockServerConfigurers.csrf())

@@ -6,9 +6,26 @@ import kr.co.kindernoti.institution.domain.model.org.InstitutionId;
 import reactor.core.publisher.Mono;
 
 public interface InstitutionUseCase {
-    Mono<Institution> saveOrganization(String orgId);
 
+    /**
+     * 기관정보 저장
+     * @param orgId
+     * @return
+     */
+    Mono<Institution> saveInstitution(String orgId);
+
+    /**
+     * 기관 상태 변경
+     * @param id
+     * @param status
+     * @return
+     */
     Mono<? extends Institution> changeStatus(InstitutionId id, Status status);
 
-    Mono<Institution> save(Institution institution);
+    /**
+     * 기관정보를 수정한다.
+     * @param institution
+     * @return
+     */
+    Mono<Institution> update(Institution institution);
 }

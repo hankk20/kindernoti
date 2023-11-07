@@ -57,7 +57,7 @@ class InstitutionServiceTest {
         given(institutionPort.save(any(Institution.class)))
                 .willReturn(Mono.just(testDomain));
         //when
-        Mono<Institution> organizationMono = organizationService.saveOrganization(testDomain.getOrgId());
+        Mono<Institution> organizationMono = organizationService.saveInstitution(testDomain.getOrgId());
 
         //then
         StepVerifier.create(organizationMono)
@@ -74,7 +74,7 @@ class InstitutionServiceTest {
                 .willReturn(Mono.just(true));
 
         //when
-        Mono<Institution> organizationMono = organizationService.saveOrganization("");
+        Mono<Institution> organizationMono = organizationService.saveInstitution("");
 
         //then
         StepVerifier.create(organizationMono)

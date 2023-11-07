@@ -3,6 +3,7 @@ package kr.co.kindernoti.institution.application.out.teacher;
 import kr.co.kindernoti.institution.domain.model.org.InstitutionId;
 import kr.co.kindernoti.institution.domain.model.teacher.Teacher;
 import kr.co.kindernoti.institution.domain.model.teacher.TeacherId;
+import kr.co.kindernoti.institution.domain.model.vo.Account;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -18,4 +19,6 @@ public interface TeacherPort {
     Mono<Teacher> save(Teacher teacher);
 
     Mono<TeacherId> delete(TeacherId teacherId);
+
+    Mono<Teacher> updateAccount(TeacherId id, Account account);
 }

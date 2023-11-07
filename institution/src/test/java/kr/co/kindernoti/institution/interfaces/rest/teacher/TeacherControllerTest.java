@@ -5,19 +5,18 @@ import com.epages.restdocs.apispec.ResourceSnippetParameters;
 import com.epages.restdocs.apispec.Schema;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import kr.co.kindernoti.institution.application.in.org.teacher.TeacherUseCase;
-import kr.co.kindernoti.institution.domain.model.vo.IdCreator;
-import kr.co.kindernoti.institution.domain.model.vo.Status;
+import kr.co.kindernoti.institution.application.in.teacher.TeacherUseCase;
 import kr.co.kindernoti.institution.domain.model.org.InstitutionId;
 import kr.co.kindernoti.institution.domain.model.teacher.Teacher;
 import kr.co.kindernoti.institution.domain.model.vo.Account;
+import kr.co.kindernoti.institution.domain.model.vo.IdCreator;
 import kr.co.kindernoti.institution.domain.model.vo.Phone;
-import kr.co.kindernoti.institution.domain.model.vo.Role;
+import kr.co.kindernoti.institution.domain.model.vo.Status;
 import kr.co.kindernoti.institution.infrastructure.spring.security.BeanConfig;
 import kr.co.kindernoti.institution.infrastructure.spring.security.HeaderAuthenticationConverter;
 import kr.co.kindernoti.institution.infrastructure.spring.security.InstitutionSecurity;
 import kr.co.kindernoti.institution.interfaces.rest.mapper.TeacherInterfaceMapper;
-import kr.co.kindernoti.institution.interfaces.rest.teacher.TeacherController;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
@@ -26,7 +25,6 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
 
 import java.util.List;
 
@@ -51,10 +49,11 @@ class TeacherControllerTest {
     TeacherUseCase useCase;
 
     @Test
+    @DisplayName("내정보 조회")
     void test() throws JsonProcessingException {
         //given
         InstitutionId institutionId = IdCreator.creator(InstitutionId.class).create();
-        Account account = Account.of("test", "홍길동", "ttt@ttt.com",Phone.of("01012223333", Phone.PhoneType.MOBILE), List.of(Role.TEACHER));
+        Account account = Account.of("test", "홍길동", "ttt@ttt.com",Phone.of("01012223333", Phone.PhoneType.MOBILE), List.of("ROLE_TEACHER"));
         Teacher teacher = new Teacher(institutionId
                 , account);
 
@@ -78,7 +77,7 @@ class TeacherControllerTest {
                     .jsonPath("$.[0].account.name").isEqualTo("홍길동")
                     .jsonPath("$.[0].account.email").isEqualTo("ttt@ttt.com")
                     .jsonPath("$.[0].account.phone.number").isEqualTo("01012223333")
-                    .jsonPath("$.[0].account.roles.[0]").isEqualTo("TEACHER")
+                    .jsonPath("$.[0].account.authorities.[0]").isEqualTo("ROLE_TEACHER")
                 .consumeWith(document("내 정보 조회", resource(ResourceSnippetParameters.builder()
                         .summary("내 정보 조회")
                         .description("로그인 사용자의 정보를 조회한다.")
@@ -92,7 +91,7 @@ class TeacherControllerTest {
                                 , fieldWithPath("[].account.email").description("이메일")
                                 , fieldWithPath("[].account.phone.number").description("전화번호")
                                 , new EnumFields(Phone.PhoneType.class).withPath("[].account.phone.phoneType").description("전화번호 유형")
-                                , fieldWithPath("[].account.roles").description("사용자 권한")
+                                , fieldWithPath("[].account.authorities").description("사용자 권한")
                                 )
                         .build())));
     }

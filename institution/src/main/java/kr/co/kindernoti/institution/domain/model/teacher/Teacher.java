@@ -21,7 +21,8 @@ public class Teacher {
     /**
      * 회원 계정 정보
      */
-    private final Account account;
+    @Setter
+    private Account account;
 
     private final InstitutionId institutionId;
 

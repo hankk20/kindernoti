@@ -1,17 +1,18 @@
 package kr.co.kindernoti.institution.infrastructure.spring.security;
 
-import kr.co.kindernoti.institution.domain.model.vo.Role;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 
-public class RoleConvertor {
-    public static Collection<? extends GrantedAuthority> convert(List<Role> roles) {
-        return roles.stream()
-                .map(Objects::toString)
+public class AuthorityConvertor {
+    public static Collection<? extends GrantedAuthority> convert(List<String> authority) {
+        if(authority == null) {
+            return Collections.emptyList();
+        }
+        return authority.stream()
                 .map(SimpleGrantedAuthority::new)
                 .toList();
     }

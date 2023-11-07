@@ -33,7 +33,7 @@ public class InstitutionService implements InstitutionUseCase {
      * @throws AlreadyDataException 이미 등록된 기관인 경우 오류 발생
      */
     @Override
-    public Mono<Institution> saveOrganization(String orgId) {
+    public Mono<Institution> saveInstitution(String orgId) {
         return institutionReadPort.existByOrgId(orgId)
                 .flatMap(exist -> {
                     if (exist) {
@@ -53,7 +53,7 @@ public class InstitutionService implements InstitutionUseCase {
      * @param status
      * @return
      */
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @Override
     public Mono<Institution> changeStatus(InstitutionId id, Status status) {
         return institutionReadPort.findById(id)
@@ -64,7 +64,7 @@ public class InstitutionService implements InstitutionUseCase {
     }
 
     @Override
-    public Mono<Institution> save(Institution institution) {
+    public Mono<Institution> update(Institution institution) {
         return institutionPort.save(institution);
     }
 

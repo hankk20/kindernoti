@@ -34,8 +34,11 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-security")
     implementation("org.springframework.boot:spring-boot-starter-validation")
     implementation("org.springframework.boot:spring-boot-starter-webflux")
+    implementation("org.springframework.kafka:spring-kafka")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
+
+    implementation("io.projectreactor.kafka:reactor-kafka:1.3.21");
 
     implementation("com.gravity9:json-patch-path:2.0.1")
 
@@ -90,7 +93,7 @@ tasks.withType<Test> {
 }
 
 tasks.jacocoTestReport {
-    dependsOn(tasks.test) // tests are required to run before generating the report
+    dependsOn(tasks.test)
 }
 
 tasks.jacocoTestReport {

@@ -42,9 +42,6 @@ public class GradeData extends AuditMetadata {
 
     private List<AClassData> aClasses;
 
-    @Version
-    private int version;
-
     @Builder
     public GradeData(GradeId id, InstitutionId institutionId, String yearMonth, String name, String description, List<AClassData> aClasses) {
         this.id = id;

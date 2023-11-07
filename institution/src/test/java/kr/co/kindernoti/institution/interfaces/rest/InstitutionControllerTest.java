@@ -11,11 +11,8 @@ import kr.co.kindernoti.institution.interfaces.rest.dto.InstitutionResponse;
 import kr.co.kindernoti.institution.testsupport.TestDataCreator;
 import kr.co.kindernoti.institution.interfaces.rest.mapper.InstitutionInterfaceMapper;
 import kr.co.kindernoti.institution.interfaces.rest.organization.InstitutionController;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
 import org.springframework.boot.test.autoconfigure.web.reactive.WebFluxTest;
@@ -94,7 +91,7 @@ class InstitutionControllerTest {
         Institution institution = TestDataCreator.institutionDomain();
 
         InstitutionResponse response = mapper.toResponse(institution);
-        given(institutionUseCase.saveOrganization(anyString()))
+        given(institutionUseCase.saveInstitution(anyString()))
                 .willReturn(Mono.just(institution));
 
         client.mutateWith(SecurityMockServerConfigurers.csrf())
