@@ -12,7 +12,7 @@ import java.util.Set;
  * ID/PW 로그인 사용자 정보
  */
 @Getter
-@Document("users")
+@Document("user")
 @TypeAlias("platformUser")
 public class PlatformUser extends User {
 

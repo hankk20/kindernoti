@@ -24,8 +24,5 @@ public class JoinController {
 
     }
 
-//    @PostMapping("/join/jwt")
-//    public Mono<ResponseEntity<Object> joinFromJwt(){
-//
-//    }
+
 }

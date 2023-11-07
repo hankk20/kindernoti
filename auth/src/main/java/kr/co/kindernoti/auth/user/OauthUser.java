@@ -13,7 +13,7 @@ import java.util.Set;
  * Oauth 로그인 사용자 정보
  */
 @Getter
-@Document("users")
+@Document("user")
 @TypeAlias("oauthUser")
 public class OauthUser extends User {
 

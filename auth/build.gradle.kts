@@ -35,6 +35,7 @@ dependencies {
     implementation("org.springframework.kafka:spring-kafka")
     implementation("org.bouncycastle:bcprov-jdk18on:1.76")
     implementation("org.bouncycastle:bcpkix-jdk18on:1.76")
+    implementation("io.projectreactor.kafka:reactor-kafka:1.3.21")
 
     //querydsl
     implementation("com.querydsl:querydsl-mongodb:5.0.0") {

@@ -15,6 +15,8 @@ import org.springframework.security.web.server.authentication.ServerAuthenticati
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 
+import java.util.Set;
+
 @Slf4j
 @RequiredArgsConstructor
 @Component
@@ -42,7 +44,7 @@ public class OauthLoginSuccessHandler implements ServerAuthenticationSuccessHand
     private Mono<OauthLoginUser> saveUser(OauthLoginUser oauthLoginUser, ServiceType serviceType){
         OauthUser build = OauthUser.builder()
                 .userId(oauthLoginUser.getUserId())
-                .serviceTypes(oauthLoginUser.getServiceTypes())
+                .serviceTypes(Set.of(serviceType))
                 .email(oauthLoginUser.getEmail())
                 .oauthProvider(oauthLoginUser.getOauthProvider())
                 .build();
