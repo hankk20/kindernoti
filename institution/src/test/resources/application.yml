@@ -1,0 +1,17 @@
+spring:
+  cloud:
+    config:
+      enabled: false
+  data:
+    mongodb:
+      username: teacheruser
+      password: teacheruser11
+      port: 27020
+      database: teacher
+      host: localhost
+  kafka:
+    bootstrap-servers: 127.0.0.1:9094
+    producer:
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    properties:
+      spring.json.add.type.headers: false
