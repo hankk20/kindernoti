@@ -18,9 +18,27 @@ services:
       - 8090:8090
     build:
       context: .
-      dockerfile: ./api-gateway/Dockerfile
+      dockerfile: spring-cloud/api-gateway/Dockerfile
     depends_on:
       - auth
+  config-server:
+    container_name: config-server
+    restart: always
+    hostname: configserver
+    ports:
+      - 8888:8888
+    build:
+      context: .
+      dockerfile: spring-cloud/config-server/Dockerfile
+    env_file:
+      - ./config/.env
+    environment:
+      - SPRING_PROFILES_ACTIVE=native,docker
+      - ENCRYPT_KEY=${CONFIG_SERVER_ENCRYPT_KEY}
+      - SPRING_SECURITY_USER_NAME=${CONFIG_SERVER_USR}
+      - SPRING_SECURITY_USER_PASSWORD=${CONFIG_SERVER_PWD}
+    volumes:
+      - $PWD/config-repo:/config-repo
   auth:
     container_name: auth
     restart: always
@@ -30,18 +48,26 @@ services:
     build:
       context: .
       dockerfile: ./auth/Dockerfile
+
   mongodb:
     environment:
       - TZ=Asia/Seoul
     env_file:
       - ./container/env/mong.env
-    image: 'mongo:7.0.2'
-    command: --replSet rs0 --timeStampFormat iso8601-local  --auth --keyFile /docker-entrypoint-initdb.d/mongodb.key
+    build:
+      context: ./container/
+      dockerfile: Dockerfile_mongodb
+    command: --replSet rs0 --timeStampFormat iso8601-local --auth --keyFile /mongodb.key
     volumes:
       - ./container/mongo:/docker-entrypoint-initdb.d:ro
       - /local/data/mongo:/data/db
     ports:
       - '27020:27017'
+    healthcheck:
+      test: |
+        test $$(mongosh --quiet -u $${MONGO_INITDB_ROOT_USERNAME} -p $${MONGO_INITDB_ROOT_PASSWORD} --eval "try { rs.initiate().ok } catch (_) { rs.status().ok }") -eq 1
+      interval: 10s
+      start_period: 30s
 
   kafka:
     image: "bitnami/kafka:3.6.0"

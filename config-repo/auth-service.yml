@@ -1,0 +1,77 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          naver:
+            client-id: '{cipher}fd4b06a7658ba559d9393dbdef7cc44a6115d6f220351caac9de1552dfa271bbf75bfe42f5daa75989300047e40210fd'
+            client-secret: '{cipher}c30b5bf8e5dcc22d5ccb094368b609e6eef9a1988570d33b99bb8d9c95a2559e'
+            client-name: "naver"
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
+            authorization-grant-type: "authorization_code"
+          kakao:
+            client-id: '{cipher}d67c01cf10b33a210e661d86c2812ac840e16ab086de11d9c165c27e124aa135a32fd9caa3aa4e42b3aa033185db0f5728e6c7352659910aa582e1e9aa802783'
+            client-secret: '{cipher}a562c544a5e271077893c9638549d4d557bed8b8baff4db068cd793dfb20510424d030f7bda3e640b3456eb2e5597c1ae3bba298487d076ffbbee349c1c1db0a'
+            client-name: "kakao"
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
+            authorization-grant-type: "authorization_code"
+            scope:
+              - openid
+          google:
+            client-id: '{cipher}0845941b4808c46f924d9291499c1db55f96c851eedeeb2a4cd17f7144e1761756bad1ff8f873d42b00c2902e00a111df354c48072346b5e30f847bd7fea6e4b3b55d3c06059d0d884795eebf2082a943f0e2d4e527c2d2b143188a293fadfaf'
+            client-secret: '{cipher}f79a6e44c5aa7e8111aeb96db0f7b4f891e8c2d7f34c212a4d0c6f462a3892ac6ece332666a2db3d0f684b5f4df69e0643d6a0db976d4539cb0534aaa825668d'
+            client-name: "google"
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}?service=user"
+            #redirect-uri: {baseScheme}://{baseHost}{basePort}{basePath}
+            authorization-grant-type: "authorization_code"
+        provider:
+          naver:
+            authorization-uri: https://nid.naver.com/oauth2.0/authorize
+            token-uri: https://nid.naver.com/oauth2.0/token
+            user-info-uri: https://openapi.naver.com/v1/nid/me
+            user-name-attribute: "response"
+          kakao:
+            authorization-uri: https://kauth.kakao.com/oauth/authorize
+            token-uri: https://kauth.kakao.com/oauth/token
+            user-info-uri: https://kapi.kakao.com/v1/oidc/userinfo
+            user-name-attribute: sub
+            issuer-uri: https://kauth.kakao.com
+            jwk-set-uri: https://kauth.kakao.com/.well-known/jwks.json
+          google:
+            authorization-uri: https://accounts.google.com/o/oauth2/v2/auth
+            token-uri: https://oauth2.googleapis.com/token
+            user-name-attribute: sub
+  data:
+    mongodb:
+      password: authuser11
+      username: authuser
+      database: auth
+      host: localhost
+      port: 27020
+  kafka:
+    bootstrap-servers: 127.0.0.1:9094
+    consumer:
+      auto-offset-reset: earliest
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      group-id: user
+
+application:
+  jwt:
+    private-key-location: "classpath:/rsa/jwt-private-key.pem"
+    expire: 2h
+    issuer: "http://localhost:8080"
+logging:
+  level:
+    root: debug
+    org.apache.kafka: info
+server:
+  port: 8081
+  forward-headers-strategy: native
+  error:
+    include-message: always
+springdoc:
+  webjars:
+    prefix: "/ui"
+  swagger-ui:
+    url: "/docs/openapi3.yaml"
+    path: "/docs/swagger"

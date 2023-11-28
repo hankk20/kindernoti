@@ -1,0 +1,4 @@
+FROM mongo:7.0.2
+RUN openssl rand -base64 756 > /mongodb.key \
+    && chmod 400 /mongodb.key \
+    && chown 999:999 /mongodb.key

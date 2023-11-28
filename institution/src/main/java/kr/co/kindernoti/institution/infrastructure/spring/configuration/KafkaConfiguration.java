@@ -25,10 +25,6 @@ public class KafkaConfiguration {
 
     @Bean
     public ReactiveKafkaProducerTemplate<String, Object> reactiveKafkaProducerTemplate(KafkaProperties properties) {
-//        if(!properties.getBootstrapServers().isEmpty()) {
-//            Map<String, Object> stringObjectMap = properties.buildProducerProperties();
-//            stringObjectMap.put(
-//        }
         return new ReactiveKafkaProducerTemplate<>(SenderOptions.create(properties.buildProducerProperties()));
     }
 }

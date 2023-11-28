@@ -1,4 +1,5 @@
 rootProject.name = "kindernoti"
 include(":auth")
-include(":api-gateway")
+include(":spring-cloud:api-gateway")
+include(":spring-cloud:config-server")
 include(":institution")

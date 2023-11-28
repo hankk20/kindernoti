@@ -16,6 +16,11 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+/**
+ * 첫번째열은 도 또는 시의 명칭 두번째는 해당 코드
+ * 세번째열은 군 또는 구의 명칭 네번째는 해당 코드를 가진 Csv를 읽어드려서 CityCode 객체로 변환한다.
+ * csv ex : 서울특별시,11,중구,11140
+ */
 @Slf4j
 @Service
 public class CityCodeCsvReaderService {
@@ -70,6 +75,11 @@ public class CityCodeCsvReaderService {
                 .collect(Collectors.groupingBy(this::parseCityCode));
     }
 
+    /**
+     * 문자열 신군구 코드를 CityCode 객체로 변환한다.
+     * @param map
+     * @return
+     */
     public List<CityCode> convertCityCode(Map<CityCode, List<String>> map) {
         Set<CityCode> cityCodes = map.keySet();
         return cityCodes.stream()
@@ -83,11 +93,21 @@ public class CityCodeCsvReaderService {
                 .toList();
     }
 
+    /**
+     * CSV 문자열에서 군/구 코드를 가져와 CountyCode 객체로 만든다.
+     * @param s
+     * @return
+     */
     private CityCode.CountyCode parseCountyCode(String s) {
         String[] split = StringUtils.split(s, ",");
         return CityCode.CountyCode.of(split[3], split[2]);
     }
 
+    /**
+     * CSV 문자열에서 도/시 코드를 가져와 CityCode 객체로 만든다.
+     * @param s
+     * @return
+     */
     private CityCode parseCityCode(String s) {
         String[] split = StringUtils.split(s, ",");
         return new CityCode(split[1], split[0]);

@@ -30,6 +30,7 @@ public class CityCodeSaveService {
 
     /**
      * 파일명과 파일 최종수정일로 저장된 파일 정보를 찿고 해당 정보가 존재 하지 않으면
+     * TODO 파일을 MD5 해시알고리즘 정보를 저장해서 파일 변경 여부를 확인 방안으로 변경하자.
      * 기존 데이터를 삭제하고 새로 저장한다.
      */
     public void initCitiCode() {

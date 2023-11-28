@@ -15,6 +15,9 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
+/**
+ * 기관 저장/업데이트 서비스
+ */
 @RequiredArgsConstructor
 @Service
 public class InstitutionService implements InstitutionUseCase {

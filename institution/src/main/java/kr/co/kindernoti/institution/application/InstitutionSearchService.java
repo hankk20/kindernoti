@@ -11,6 +11,9 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+/**
+ * 기관 조회 서비스
+ */
 @RequiredArgsConstructor
 @Service
 public class InstitutionSearchService implements InstitutionSearchUseCase {
@@ -20,7 +23,7 @@ public class InstitutionSearchService implements InstitutionSearchUseCase {
 
     /**
      * 기관을 검색 한다
-     * 등록된 기관을 우선으로 검색후 기초기관 데이터를 검색 하여 중복 기관은 제거후 리턴 한다.
+     * concatWith를 사용하여 등록된 기관을 우선 검색후 기초기관 데이터를 검색 하여 중복 기관은 제거후 리턴 한다.
      * @param name
      * @return
      */
