@@ -48,7 +48,9 @@ services:
     build:
       context: .
       dockerfile: ./auth/Dockerfile
-
+    environment:
+      - SPRING_SECURITY_USER_NAME=${CONFIG_SERVER_USR}
+      - SPRING_SECURITY_USER_PASSWORD=${CONFIG_SERVER_PWD}
   mongodb:
     environment:
       - TZ=Asia/Seoul
