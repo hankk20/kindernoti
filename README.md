@@ -27,7 +27,6 @@
 - [Webflux에서 @TransactionEventListner기 동작 하지 않는다.(Spring Framework 6.0 이하)](https://hankk.notion.site/Webflux-TransactionEventListner-0ca73e8372a0433cb5e820fcf4f25f02?pvs=4)
 - [Spring에서 Reactive Kafka Producer/Consumer 사용](https://hankk.notion.site/Spring-Reactive-Kafka-Producer-Consumer-5db7fa1be187491fae43682e22480b1d?pvs=4)
 - [Spring Rest Docs + SpringDoc + Epages로 API 문서 구성](https://hankk.notion.site/RestDoc-With-OpenAPI-3-0-f719be4c3d4d43cca146a5856c46513a?pvs=4)
-- [MongoDB + QueryDsl 설정](https://hankk.notion.site/QueryDsl-f8038fc9509a4e64aa5d7054676e5f39?pvs=4)
 - [Spring에서 MonogDB, Webflux Test 관련 이슈](https://hankk.notion.site/6f5b5b70317340c88cd74258675cf1bd?pvs=4)
 - [Jsoe 라이브러리를 사용하여 JWK 구성 하기](https://hankk.notion.site/51663f3637c84362b3f4abfc94509eab?pvs=4)
 
@@ -37,6 +36,8 @@
 
 ### Infra
 - [Mongodb SingleNode ReflicaSet 구성](https://hankk.notion.site/Mongo-Single-Node-Replica-Set-76ebf73b32a840429d86ba3731fd107a?pvs=4)
+- [Gradle 중앙버전관리 및 Build Convention 설정](https://hankk.notion.site/Version-Catalog-Build-Convention-8df25b53b44e4ec499554a05ef255fa7?pvs=4)
+- [MongoDB + QueryDsl 설정](https://hankk.notion.site/QueryDsl-f8038fc9509a4e64aa5d7054676e5f39?pvs=4)
 ## Todo
 - ~~codecov 적용~~ : 2023-10-17
 - 

@@ -18,6 +18,7 @@ bouncycastle-bcpkix = {group = "org.bouncycastle", name = "bcpkix-jdk18on", vers
 epages-webtestclinet = {group = "com.epages", name = "restdocs-api-spec-webtestclient", version.ref = "epages-restdoc"}
 epages-restdoc-api = {group = "com.epages", name = "restdocs-api-spec", version.ref = "epages-restdoc"}
 spring-restdoc = {group = "org.springframework.restdocs", name = "spring-restdocs-webtestclient"}
+
 [bundles]
 bouncycastle = ["bouncycastle-bcpkix", "bouncycastle-bcprov"]
 restdoc = ["epages-restdoc-api", "epages-webtestclinet", "spring-restdoc"]
