@@ -13,9 +13,10 @@ public class ApiGatewaySecurityConfiguration {
     public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity httpSecurity) {
         return httpSecurity
                 .authorizeExchange(exchage ->
-                        exchage.pathMatchers("/login/**", "/jwt")
+                        exchage.anyExchange()
                                 .permitAll()
-                                .anyExchange().authenticated())
+                                )
+                .csrf(ServerHttpSecurity.CsrfSpec::disable)
                 .oauth2ResourceServer(spec -> spec.jwt(Customizer.withDefaults()))
                 .build();
     }
