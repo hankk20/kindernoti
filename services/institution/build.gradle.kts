@@ -98,7 +98,6 @@ openapi3 {
     version = "1"
     format = "yaml"
     outputDirectory = layout.buildDirectory.dir("resources/main/static/docs").get().asFile.path
-    println("Output Directory ::: $outputDirectory")
 }
 
 tasks.withType<BootJar> {
