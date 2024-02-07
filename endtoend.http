@@ -1,0 +1,30 @@
+### Form 회원가입
+POST http://kindernoti.co.kr/member-service/join
+Content-Type: application/json
+
+{
+  "username": "testuser2",
+  "password": "1111",
+  "email": "tttt2@te.com",
+  "fullName": "한광수"
+}
+
+### Form Login
+POST http://kindernoti.co.kr/login
+Content-Type: application/x-www-form-urlencoded
+
+username=testuser2&password=1111
+
+> {% client.global.set("auth_token", response.body.access_token); %}
+
+### 해당 서비스 권한 추가
+PUT http://kindernoti.co.kr/member-service/roles
+Authorization: Bearer {{auth_token}}
+
+### 내정보 조회
+GET http://kindernoti.co.kr/institutions-service/me
+Authorization: Bearer {{auth_token}}
+
+### 교직원 회원 가입
+POST http://kindernoti.co.kr/institutions-service/institution/0f1892f3-0f84-482b-b254-81700e348ce7/teachers
+Authorization: Bearer {{auth_token}}
