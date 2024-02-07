@@ -1,0 +1,22 @@
+server:
+  port: 8088
+spring:
+  application:
+    name: institution-service
+  config:
+    import: "optional:configserver:"
+  cloud:
+    config:
+      uri: http://localhost:8888
+eureka:
+  client:
+    service-url:
+
+---
+spring:
+  config:
+    activate:
+      on-profile: docker
+  cloud:
+    config:
+      uri: http://config-server

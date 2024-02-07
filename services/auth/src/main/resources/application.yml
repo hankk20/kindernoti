@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: auth-service
+  config:
+    import: "optional:configserver:"
+  cloud:
+    config:
+      fail-fast: false
+      uri: http://localhost:8888
+springdoc:
+  swagger-ui:
+    urls:
+      - url: localhost:8080/docs/openapi3.yaml
+        name: member
+        display-name: member service
+      - url: localhost:8088/docs/openapi3.yaml
+        name: member
+        display-name: member service
+---
+spring:
+  config:
+    activate:
+      on-profile: docker
+  cloud:
+    config:
+      uri: http://config-server
+logging:
+  level:
+    root: info
