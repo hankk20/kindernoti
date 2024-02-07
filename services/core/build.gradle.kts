@@ -1,13 +1,17 @@
 plugins {
     id("kindernoti.java-base")
     jacoco
-    alias(libs.plugins.spring.boot)
+    alias(libs.plugins.spring.boot) apply false
     alias(libs.plugins.spring.dependency)
 }
 
-group = "kr.co.kindernoti"
+dependencyManagement {
+    imports {
+        mavenBom(org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES)
+    }
+}
 
-extra["snippetsDir"] = file("build/generated-snippets")
+group = "kr.co.kindernoti"
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-security")
@@ -15,7 +19,6 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-validation")
     implementation("org.springframework.boot:spring-boot-starter-webflux")
     implementation("org.springframework.boot:spring-boot-starter-oauth2-resource-server")
-    developmentOnly("org.springframework.boot:spring-boot-devtools")
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
     implementation("org.keycloak:keycloak-core:23.0.4")
     //lombok
