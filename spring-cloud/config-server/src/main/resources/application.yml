@@ -10,6 +10,19 @@ spring:
       server:
         native:
           search-locations: file:${user.dir}/config-repo
+        git:
+          uri: git@github.com:hankk20/kindernoti.git
+          private-key: |
+            -----BEGIN OPENSSH PRIVATE KEY-----
+            b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW
+            QyNTUxOQAAACBIDiIjtfto3aIQ+vB+ePuhEuE+CsxoQjGDsCh+j21IhgAAAJiF+mm5hfpp
+            uQAAAAtzc2gtZWQyNTUxOQAAACBIDiIjtfto3aIQ+vB+ePuhEuE+CsxoQjGDsCh+j21Ihg
+            AAAECu6DOtwtX6eAZdoLCE8V8PPz+h9RjAh1tRZwJb3s/xjEgOIiO1+2jdohD68H54+6ES
+            4T4KzGhCMYOwKH6PbUiGAAAAEWhhbmtrMjBAZ21haWwuY29tAQIDBA==
+            -----END OPENSSH PRIVATE KEY-----
+          ignore-local-ssh-settings: true
+          basedir: file:/local/config
+          search-paths: /config-repo
 ---
 spring:
   config:

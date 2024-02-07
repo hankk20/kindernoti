@@ -15,6 +15,6 @@
 - .env 파일로 관리
     ```dotenv
     CONFIG_SERVER_ENCRYPT_KEY=key
-    CONFIG_SERVER_USER=configuser
+    CONFIG_SERVER_USR=configuser
     CONFIG_SERVER_PASSWORD=configuserpassword
     ```
