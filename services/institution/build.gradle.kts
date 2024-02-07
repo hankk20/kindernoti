@@ -12,8 +12,6 @@ plugins {
 
 group = "kr.co.kindernoti"
 
-extra["snippetsDir"] = file("build/generated-snippets")
-
 dependencies {
     implementation(project(":services:core"))
     implementation(platform(libs.bom.spring.cloud))
