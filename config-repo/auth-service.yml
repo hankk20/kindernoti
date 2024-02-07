@@ -58,7 +58,7 @@ spring:
 application:
   jwt:
     private-key-location: "classpath:/rsa/jwt-private-key.pem"
-    expire: 2h
+    expire: 7d
     issuer: "http://localhost:8080"
 logging:
   level:
@@ -73,5 +73,22 @@ springdoc:
   webjars:
     prefix: "/ui"
   swagger-ui:
-    url: "/docs/openapi3.yaml"
     path: "/docs/swagger"
+    urls:
+      - url: http://localhost:8080/docs/openapi3.yaml
+        name: member
+        display-name: member service
+      - url: http://localhost:8088/docs/openapi3.yaml
+        name: member
+        display-name: member service
+---
+#spring:
+#  config:
+#    activate:
+#      on-profile: docker
+#  data:
+#    mongodb:
+#      host: mongodb
+#      port: 27017
+#  kafka:
+#    bootstrap-servers: kafka:9094

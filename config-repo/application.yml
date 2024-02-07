@@ -1,0 +1,62 @@
+app:
+  eureka-username: '{cipher}10cf812e5efff6709561ab0d0935141c294b1b28148c60baa6ad174e8925f06a'
+  eureka-password: '{cipher}2d49089151345f6285f3bfad814d4ff344635c2aede1fbb70ca17f6ab08d0d29d617dced4463794a30db410786f36c30'
+  eureka-server-port: 8761
+  eureka-server: localhost
+  auth-server: localhost
+  hostname:
+    auth: localhost:8090
+    institution: localhost:8082
+management.endpoint.health.show-details: "ALWAYS"
+management.endpoints.web.exposure.include: "*"
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: "http://${app.eureka-username}:${app.eureka-password}@${app.eureka-server}:${app.eureka-server-port}/eureka"
+    initialInstanceInfoReplicationIntervalSeconds: 5
+    registryFetchIntervalSeconds: 5
+  instance:
+    leaseRenewalIntervalInSeconds: 5
+    leaseExpirationDurationInSeconds: 5
+    prefer-ip-address: true
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:9999/realms/kindernoti/protocol/openid-connect/certs
+---
+spring:
+  config.activate.on-profile: docker
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://auth.kindernoti.co.kr/realms/kindernoti/protocol/openid-connect/certs
+  data:
+    mongodb:
+      host: mongodb
+      port: 27017
+  kafka:
+    bootstrap-servers: kafka:9095
+logging:
+  level:
+    root: debug
+    org.apache.kafka: info
+    com.netflix: info
+    org.apache: info
+    org.springframework.web:
+      client: info
+      HttpLogging: info
+    org.mongodb.driver.cluster: info
+    sun.rmi: info
+
+app:
+  eureka-server: eureka-server
+  eureka-server-port: 80
+  auth-server: auth-service
+  hostname:
+    auth: auth-service
+    institution: institution-service
+    member: member-service
+    keycloak: keycloak

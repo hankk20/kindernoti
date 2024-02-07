@@ -14,17 +14,16 @@ spring:
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
     properties:
       spring.json.add.type.headers: false
-logging:
-  level:
-    root: debug
-    org.apache.kafka: info
+
 external:
   api:
     neis: '{cipher}9e4ae87cc42fc3e07da0bca0cccb396ecb7ff3545957906bf464bbaa62c3190ca8146b996e95cac8a4f2f9d7651b6d27f2468225f5624c3ee0a4fe444f0925e7'
     kindergaten: '{cipher}c6a6fa61fc2cf5a1d76d87e937efc03529427055fdc1519444b2d12cbd45ea403cf866af451f9990f3425ee62bc8a2498994d557a757893942f4100b26f7f2e4'
+
 basedata:
   citycode:
     path: "basedata/citycode.csv"
+
 server:
   error:
     include-message: always

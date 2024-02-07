@@ -1,0 +1,8 @@
+{
+  "realm": "kindernoti",
+  "auth-server-url" : "http://localhost:9999",
+  "resource" : "teacher-client",
+  "credentials": {
+    "secret": "LtNpLsXfkOd4lZQXgL2KT4p7jpaetwc4"
+  }
+}
