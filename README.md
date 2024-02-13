@@ -1,7 +1,7 @@
 # Toy Project
 [![codecov](https://codecov.io/gh/hankk20/kindernoti/graph/badge.svg?token=87N2E3YJZF)](https://codecov.io/gh/hankk20/kindernoti)
 ### 유치원 및 학교 알림장을 구현
-## 🧱📐 System Architecture
+## 📐 System Architecture
 ![img_1.png](docs/img_1.png)
 ## 🔨 설정
 ### hosts
@@ -13,7 +13,7 @@
 ### [인증/회원 서비스](services/member/README.md)
 - Oauth, ID/PW 로그인 기능
 - 통합 회원 정보 관리
-### 교직원 서비스
+### [교직원 서비스](services/institution/README.md)
 ### 학무보 서비스
 ### 알림 서비스
 ## 2️⃣ Tech
@@ -54,4 +54,3 @@
 - 인증서버 Keycloak으로 대체 : 2024-02-01 
 - 권한처리 세분화
 - 로그 수집
-- 
