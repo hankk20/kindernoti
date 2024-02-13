@@ -6,57 +6,6 @@ spring:
     config:
       uri: http://localhost:8888
       allow-override: false
-  cache:
-    redis:
-      time-to-live: 60m
-      key-prefix: member_
-  data:
-    redis:
-      host: localhost
-      port: 6379
-      password: 1111
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          jwk-set-uri: ${keycloak.url}/realms/kindernoti/protocol/openid-connect/certs
-      client:
-        registration:
-          teacher:
-            client-id: teacher-client
-            client-secret: sqhGAsJoWraImYe11bhslzGIDXzcZ0ps
-            authorization-grant-type: authorization_code
-            scope: openid
-            provider: keycloak
-            redirect-uri: "${keycloak.redirect-uri:{baseUrl}}/login/oauth2/code/{registrationId}"
-          parent:
-            client-id: parent-client
-            client-secret: 1OgCDaa7eGu1MRFPy86L5Ud8F9Nu3vO3
-            authorization-grant-type: authorization_code
-            scope: openid
-            provider: keycloak
-            redirect-uri: "${keycloak.redirect-uri:{baseUrl}}/login/oauth2/code/{registrationId}"
-        provider:
-          keycloak:
-            authorization-uri: ${keycloak.url}/realms/kindernoti/protocol/openid-connect/auth
-            issuer-uri: ${keycloak.url}/realms/kindernoti
-            user-name-attribute: preferred_username
-            jwk-set-uri: ${keycloak.url}/realms/kindernoti/protocol/openid-connect/certs
-            token-uri: ${keycloak.url}/realms/kindernoti/protocol/openid-connect/token
-            user-info-uri: ${keycloak.url}/realms/kindernoti/protocol/openid-connect/userinfo
-keycloak:
-  url: http://auth.kindernoti.co.kr
-  realm: kindernoti
-  api-url: ${keycloak.url}/admin/realms/${keycloak.realm}
-  client:
-    client-id: teacher-client
-    client-secret: sqhGAsJoWraImYe11bhslzGIDXzcZ0ps
-  admin:
-    realm: master
-    username: admin
-    password: admin
-    client-id: restapi
-    client-secret: wSedkNs5ajN1RbS6zboBeCarWf6h40Ij
 logging:
   level:
     root: debug
@@ -68,11 +17,3 @@ spring:
   cloud:
     config:
       uri: http://config-server
-  data:
-    redis:
-      host: redis-server
-      port: 6379
-      password: 1111
-keycloak:
-  url: http://auth.kindernoti.co.kr
-  redirect-uri: http://kindernoti.co.kr
