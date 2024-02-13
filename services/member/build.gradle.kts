@@ -71,6 +71,12 @@ dependencies {
 
 tasks.withType<Test> {
 	useJUnitPlatform()
+	testLogging {
+		events("failed")
+		setExceptionFormat("full")
+		showCauses = true
+		showStackTraces = true
+	}
 	finalizedBy(tasks.jacocoTestReport)
 }
 
