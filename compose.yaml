@@ -12,6 +12,12 @@ services:
       - SPRING_PROFILES_ACTIVE=docker
       - SPRING_CLOUD_CONFIG_USERNAME=${CONFIG_SERVER_USR}
       - SPRING_CLOUD_CONFIG_PASSWORD=${CONFIG_SERVER_PWD}
+    depends_on:
+      - config-server
+    env_file:
+      - .env
+    healthcheck:
+      test: wget --no-verbose --tries=1 --spider http://localhost/actuator/health || exit 1
   config-server:
     container_name: config-server
     build: spring-cloud/config-server
@@ -28,6 +34,10 @@ services:
       - SPRING_SECURITY_USER_PASSWORD=${CONFIG_SERVER_PWD}
     volumes:
       - $PWD/config-repo:/config-repo
+    env_file:
+      - .env
+    healthcheck:
+      test: wget --no-verbose --tries=1 --spider http://localhost/actuator/health || exit 1
   eureka-server:
     container_name: eureka-server
     build: spring-cloud/eureka-server
@@ -40,12 +50,17 @@ services:
       - SPRING_CLOUD_CONFIG_USERNAME=${CONFIG_SERVER_USR}
       - SPRING_CLOUD_CONFIG_PASSWORD=${CONFIG_SERVER_PWD}
     depends_on:
-      - config-server
+      config-server:
+        condition: service_healthy
+    env_file:
+      - .env
+    healthcheck:
+      test: wget --no-verbose --tries=1 --spider http://localhost/actuator/health || exit 1
 # Service
   institution:
     container_name: institution
     build: services/institution
-    restart: "no"
+    restart: on-failure
     ports:
       - "8082:80"
     environment:
@@ -56,10 +71,12 @@ services:
     depends_on:
       - config-server
       - eureka-server
+    env_file:
+      - .env
   member:
     container_name: member
     build: services/member
-    restart: "no"
+    restart: on-failure
     ports:
       - "8080:80"
       - "5005:5005"
@@ -71,12 +88,13 @@ services:
     depends_on:
       - config-server
       - eureka-server
-
+    env_file:
+      - .env
   # Infra
   nginx:
     container_name: nginx
     image: 'nginx:1.25.1-alpine'
-    restart: always
+    restart: on-failure
     volumes:
       - ./container/nginx/nginx.conf:/etc/nginx/nginx.conf
     ports:

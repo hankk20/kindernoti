@@ -5,7 +5,6 @@ spring:
   cloud:
     config:
       uri: http://localhost:8888
-      allow-override: false
 logging:
   level:
     root: debug

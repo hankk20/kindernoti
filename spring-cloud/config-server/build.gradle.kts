@@ -10,6 +10,8 @@ dependencies {
     implementation(platform(libs.bom.spring.cloud))
     implementation("org.springframework.boot:spring-boot-starter-security")
     implementation("org.springframework.cloud:spring-cloud-config-server")
+    implementation("org.springframework.boot:spring-boot-starter-actuator")
+
     compileOnly("org.projectlombok:lombok")
     annotationProcessor("org.projectlombok:lombok")
     testImplementation("org.springframework.boot:spring-boot-starter-test")

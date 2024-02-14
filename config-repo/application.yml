@@ -54,7 +54,6 @@ logging:
 app:
   eureka-server: eureka-server
   eureka-server-port: 80
-  auth-server: auth-service
   hostname:
     auth: auth-service
     institution: institution-service

@@ -12,6 +12,7 @@ dependencies {
     implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
     implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-server")
     implementation("org.springframework.cloud:spring-cloud-starter-config")
+
     compileOnly("org.projectlombok:lombok")
     developmentOnly("org.springframework.boot:spring-boot-docker-compose")
     annotationProcessor("org.projectlombok:lombok")

@@ -19,7 +19,8 @@ public class EurekaSecurityConfig {
     @Bean
     public SecurityFilterChain securityWebFilterChain(HttpSecurity security) throws Exception {
         return security.httpBasic(Customizer.withDefaults())
-                .authorizeHttpRequests(request -> request.anyRequest().authenticated())
+                .authorizeHttpRequests(request -> request.requestMatchers("/actuator/**").permitAll()
+                        .anyRequest().authenticated())
                 .csrf(csrf -> csrf.ignoringRequestMatchers("/eureka/**"))
                 .cors(AbstractHttpConfigurer::disable)
                 .build();
