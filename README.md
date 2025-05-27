@@ -8,7 +8,7 @@
 - Oauth, ID/PW 로그인 기능
 - 통합 회원 정보 관리
 ### [교직원 서비스](services/institution/README.md)
-### 학무보 서비스
+### 학부모 서비스
 ### 알림 서비스
 ## 🛠 Tech
 ### Architecture
